@@ -1,0 +1,46 @@
+@startuml DiagramaClases1 Class
+class Musico {
+    +Nombre: String
+    +edad: int
+    +numeroTelefonico: String
+    +Tocar(): void
+    +AfinarInstrumento(): void
+}
+
+interface Instrumento {
+    +sonar(): void
+}
+
+Musico --> Instrumento
+
+class Guitarra
+class Acordeon
+class Trompeta
+class Maracas
+
+Instrumento <|-- Guitarra
+Instrumento <|-- Acordeon
+Instrumento <|-- Trompeta
+Instrumento <|-- Maracas
+
+class Grupo_musical {
+    +array_musicos: List<Musico>
+    +array_instrumentos: List<Instrumento>
+    +asignarInstrumento(musico: Musico, instrumento: Instrumento): void
+}
+
+Musico "1..*" --> "1" Grupo_musical : forma parte de
+Grupo_musical "1" --> "0..*" Instrumento : utiliza
+
+class Control
+
+Control --> Grupo_musical
+
+class GrupoVallenato
+class GrupoSalsa
+class Mariachis
+
+Grupo_musical <|-- GrupoVallenato
+Grupo_musical <|-- GrupoSalsa
+Grupo_musical <|-- Mariachis
+@enduml
