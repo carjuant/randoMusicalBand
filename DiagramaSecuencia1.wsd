@@ -1,0 +1,25 @@
+@startuml DiagramaSecuencia Sequence
+actor User
+
+User -> Banda : __init__()
+activate Banda
+
+Banda -> Musico : Crear instancias de Musico (en loop)
+activate Musico
+Musico --> Banda : Retorna Musico
+deactivate Musico
+
+Banda -> Instrumentos : random.choice(misInstrumentos) (en loop)
+activate Instrumentos
+Instrumentos --> Banda : Retorna Instrumento
+deactivate Instrumentos
+
+Banda -> Banda : asignarMusico(self.musicos[i],self.instrumentos[i]) (en loop)
+activate Banda
+Banda --> Banda : Asigna Musico a Instrumento en self.banda
+deactivate Banda
+
+Banda --> User : Imprime la Banda
+deactivate Banda
+
+@enduml
