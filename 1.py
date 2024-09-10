@@ -10,36 +10,23 @@ class Banda():
         self.banda={}
         for i in range (random.randint(1, 10)):
             self.musicos.append(Musico(f"Musico_{i}",random.randint(18,50),3000000000+random.randint(1,20)))
-            print(self.musicos[i])
         #Se toman los instrumentos random
         for i in range (len(self.musicos)):
             self.instrumentos.append(random.choice(misInstrumentos))
-            self.instrumentos[i].sonar()
         #Creamos la banda y cumplimos la dependencia del uml por medio de un diccionario
         for i in range(len(self.musicos)):
             self.asignarMusico(self.musicos[i],self.instrumentos[i])
+        #Imprime
         for clave, valor in self.banda.items():
              print(f"{clave}: {valor}")
 
-             
+
     def asignarMusico(self,musico,instrumento):
         self.banda[musico]=instrumento
 
         
+aux=int(input("Que desea realizar: \n 1: Crear una banda aleatoria \n 2: Salir del programa\n"))
+while aux!=2:
+    mibanda=Banda()
+    aux=int(input("Que desea realizar: \n 1: Crear una banda aleatoria \n 2: Salir del programa\n"))
 
-mibanda=Banda()
-'''    
-musicos=[]
-instrumentos=[]
-#Creo un numero aleatorio de musicos
-for i in range (random.randint(1, 10)):
-    musicos.append(Musico(f"Musico_{i}",random.randint(18,50),3000000000+random.randint(1,20)))
-    print(musicos[i])
-#Aca llamo instrumentos aleatorios, preguntar de donde sale el none a la hora de imprimir
-for i in range (len(musicos)):
-    instrumentos.append(random.choice(misInstrumentos))
-    print(instrumentos[i].sonar())
-
-mibanda=Banda(musicos,instrumentos)
-#Preguntar si deberia trabajar con metodos o si en el constructor deberia asignar los valores a mi diccionario
-'''
